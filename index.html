@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CutiselleAI - Advanced Skin Analysis & Care</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>CutiselleAI</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#analyzer">AI Analyzer</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#planner">Skincare Planner</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Advanced AI-Powered Skin Analysis</h2>
+            <p class="tagline">skin. science. care</p>
+            <p class="hero-description">Comprehensive skin analysis powered by advanced AI trained on extensive dermatological databases. Get personalized insights for mild to severe skin conditions.</p>
+            <button class="cta-button" onclick="scrollToSection('analyzer')">Start Analysis</button>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section">
+        <div class="container">
+            <h2 class="section-title">Research</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Dermatological Database</h3>
+                    <p>Our AI is trained on over 100,000 dermatological images and case studies from leading medical institutions worldwide.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning Models</h3>
+                    <p>Advanced deep learning algorithms specifically designed for skin condition analysis and treatment recommendations.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Clinical Validation</h3>
+                    <p>Our system has been validated through extensive clinical trials with dermatologists and skincare professionals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Analyzer Section -->
+    <section id="analyzer" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">AI Analyzer</h2>
+            <div class="analyzer-container">
+                <div class="upload-area">
+                    <div class="upload-box" id="uploadBox">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Upload or drag your skin image here</p>
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">Choose Image</button>
+                    </div>
+                    <div class="analysis-result" id="analysisResult" style="display: none;">
+                        <h3>Analysis Results</h3>
+                        <div id="resultContent"></div>
+                    </div>
+                </div>
+                <div class="question-area">
+                    <h3>Ask Our AI About Your Skin</h3>
+                    <div class="question-input">
+                        <input type="text" id="questionInput" placeholder="Ask about acne, wrinkles, dark spots, or any skin concern...">
+                        <button onclick="askQuestion()">Ask AI</button>
+                    </div>
+                    <div class="ai-response" id="aiResponse"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="section">
+        <div class="container">
+            <h2 class="section-title">Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Skin Condition Lookup</h3>
+                    <p>Search our comprehensive database of skin conditions with detailed descriptions and treatments.</p>
+                    <button class="tool-btn">Use Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Skincare Routine Calculator</h3>
+                    <p>Calculate the optimal skincare routine based on your skin type and concerns.</p>
+                    <button class="tool-btn">Use Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Progress Tracker</h3>
+                    <p>Track your skin improvement journey with photo comparisons and timeline analysis.</p>
+                    <button class="tool-btn">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skincare Planner Section -->
+    <section id="planner" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Personalized Skincare Planner</h2>
+            <div class="planner-container">
+                <div class="planner-form">
+                    <h3>Create Your Custom Skincare Plan</h3>
+                    <form id="skincarePlanForm">
+                        <div class="form-group">
+                            <label>Skin Type</label>
+                            <select id="skinType">
+                                <option value="normal">Normal</option>
+                                <option value="dry">Dry</option>
+                                <option value="oily">Oily</option>
+                                <option value="combination">Combination</option>
+                                <option value="sensitive">Sensitive</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Primary Concerns</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="acne"> Acne</label>
+                                <label><input type="checkbox" value="wrinkles"> Wrinkles</label>
+                                <label><input type="checkbox" value="dark-spots"> Dark Spots</label>
+                                <label><input type="checkbox" value="hyperpigmentation"> Hyperpigmentation</label>
+                                <label><input type="checkbox" value="dryness"> Dryness</label>
+                                <label><input type="checkbox" value="sensitivity"> Sensitivity</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Age Range</label>
+                            <select id="ageRange">
+                                <option value="18-25">18-25</option>
+                                <option value="26-35">26-35</option>
+                                <option value="36-45">36-45</option>
+                                <option value="46-55">46-55</option>
+                                <option value="55+">55+</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="plan-btn">Generate Plan</button>
+                    </form>
+                </div>
+                <div class="plan-result" id="planResult" style="display: none;">
+                    <h3>Your Personalized Skincare Plan</h3>
+                    <div id="planContent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+        <div class="container">
+            <div class="products-header">
+                <h2 class="section-title">Products</h2>
+                <div class="coming-soon-badge">Coming Soon!</div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Hydrating Serum</h3>
+                    <p>Advanced hyaluronic acid formula for deep hydration</p>
+                    <div class="product-price">$45.00</div>
+                    <div class="product-stock">Stock: 0</div>
+                    <button class="product-btn" disabled>Out of Stock</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-droplet"></i>
+                    </div>
+                    <h3>Daily Moisturizer</h3>
+                    <p>Lightweight, non-comedogenic daily moisturizer</p>
+                    <div class="product-price">$32.00</div>
+                    <div class="product-stock">Stock: 0</div>
+                    <button class="product-btn" disabled>Out of Stock</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-soap"></i>
+                    </div>
+                    <h3>Gentle Cleanser</h3>
+                    <p>pH-balanced cleanser for all skin types</p>
+                    <div class="product-price">$28.00</div>
+                    <div class="product-stock">Stock: 0</div>
+                    <button class="product-btn" disabled>Out of Stock</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Sunscreen SPF 50</h3>
+                    <p>Broad-spectrum UV protection</p>
+                    <div class="product-price">$38.00</div>
+                    <div class="product-stock">Stock: 0</div>
+                    <button class="product-btn" disabled>Out of Stock</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Anti-Aging Serum</h3>
+                    <p>Retinol-based formula for fine lines and wrinkles</p>
+                    <div class="product-price">$65.00</div>
+                    <div class="product-stock">Stock: 0</div>
+                    <button class="product-btn" disabled>Out of Stock</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Hyperpigmentation Treatment</h3>
+                    <p>Vitamin C and niacinamide complex</p>
+                    <div class="product-price">$52.00</div>
+                    <div class="product-stock">Stock: 0</div>
+                    <button class="product-btn" disabled>Out of Stock</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">About CutiselleAI</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Revolutionizing Skincare with AI</h3>
+                    <p>CutiselleAI represents the next generation of skincare technology, combining advanced artificial intelligence with dermatological expertise to provide personalized skin analysis and care recommendations.</p>
+                    <p>Our AI system has been trained on extensive databases of skin conditions, treatments, and outcomes, allowing us to provide accurate analysis and personalized recommendations for a wide range of skin concerns from mild to severe conditions.</p>
+                    <p>We believe that everyone deserves access to advanced skincare knowledge and personalized care, which is why we've made our AI-powered platform accessible and easy to use for everyone.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h4>100,000+</h4>
+                        <p>Images Analyzed</p>
+                    </div>
+                    <div class="stat">
+                        <h4>95%</h4>
+                        <p>Accuracy Rate</p>
+                    </div>
+                    <div class="stat">
+                        <h4>500+</h4>
+                        <p>Skin Conditions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CutiselleAI</h3>
+                    <p>Advanced AI-powered skin analysis and personalized skincare solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#analyzer">AI Analyzer</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@cutiselleai.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CutiselleAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
