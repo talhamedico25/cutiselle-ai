@@ -92,15 +92,42 @@ CutiselleAI/
 - **Font Awesome**: Professional icons
 - **Google Fonts**: Inter and Futura font families
 
-## Mock AI Functionality
-The website includes realistic mock AI responses for:
-- Acne and breakout concerns
-- Anti-aging and wrinkle questions  
-- Hyperpigmentation and dark spots
-- Dry skin and moisturizing
-- Sensitive skin recommendations
-- Pore size concerns
-- General skincare advice
+## Comprehensive Skin Conditions Database
+The website includes a comprehensive database with detailed information for 20+ skin conditions:
+
+### Supported Conditions:
+- **Normal Skin** - Healthy skin maintenance and care
+- **Acne Vulgaris** - Blackheads, whiteheads, cysts, and inflammatory lesions
+- **Atopic Dermatitis (Eczema)** - Chronic inflammatory skin condition
+- **Contact Dermatitis** - Allergic and irritant reactions
+- **Rosacea** - Facial redness and visible blood vessels
+- **Psoriasis** - Autoimmune condition with scaly patches
+- **Vitiligo** - Loss of skin pigmentation
+- **Alopecia Areata** - Patchy hair loss
+- **Basal Cell Carcinoma** - Most common skin cancer
+- **Urticaria (Hives)** - Raised, itchy welts
+- **Ichthyosis** - Dry, scaly skin resembling fish scales
+- **Cutaneous Lupus** - Autoimmune skin manifestations
+- **Skin Cancer (General)** - Various malignant skin growths
+- **Acanthosis Nigricans** - Dark, velvety patches
+- **Diaper Rash** - Common infant skin irritation
+- **Epidermolysis Bullosa** - Rare genetic blistering disorder
+- **Erythema Multiforme** - Target-like lesions
+- **Erythema Nodosum** - Tender red bumps on shins
+- **Raynaud Phenomenon** - Color changes in fingers/toes
+- **Ringworm (Tinea)** - Fungal skin infection
+- **Seborrheic Dermatitis** - Scaly, greasy patches
+- **Warts** - HPV-caused skin growths
+
+### For Each Condition, the Database Includes:
+- **Detailed Description** - Medical overview and characteristics
+- **Symptoms List** - Common signs and manifestations
+- **Causes** - Underlying factors and triggers
+- **Treatment Options** - Topical, oral, and professional treatments
+- **Severity Levels** - From mild cosmetic concerns to serious medical conditions
+- **Prevention Tips** - Lifestyle and care recommendations
+- **When to See a Doctor** - Clear guidance on seeking professional help
+- **Demographics** - Common age groups and prevalence data
 
 ## Customization
 - Edit colors in CSS `:root` variables
