@@ -5,30 +5,15 @@ let skinModel = null;
 const MODEL_URL = 'model/model.json';
 const IMAGE_SIZE = 224;
 
-// Class keys must match the model output order (update to your training order)
+// Class keys must match the model output order (HAM10000 7 classes)
 const CLASS_KEYS = [
-  'normal',
-  'acne',
-  'eczema',
-  'dermatitis',
-  'rosacea',
-  'psoriasis',
-  'vitiligo',
-  'alopecia_areata',
-  'basal_cell_carcinoma',
-  'hives',
-  'ichthyosis',
-  'cutaneous_lupus',
-  'skin_cancer',
-  'acanthosis_nigricans',
-  'diaper_rash',
-  'epidermolysis_bullosa',
-  'erythema_multiforme',
-  'erythema_nodosum',
-  'raynaud',
-  'ringworm',
-  'seborrheic_dermatitis',
-  'wart'
+  'akiec', // Actinic keratoses and intraepithelial carcinoma
+  'bcc',   // Basal cell carcinoma
+  'bkl',   // Benign keratosis-like lesions
+  'df',    // Dermatofibroma
+  'mel',   // Melanoma
+  'nv',    // Melanocytic nevus
+  'vasc'   // Vascular lesions
 ];
 
 async function ensureModelLoaded() {
