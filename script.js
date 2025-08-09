@@ -1182,7 +1182,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Smooth scrolling for navigation links
+        // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -1211,11 +1211,61 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Navbar background change on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe cards for animation
+    document.querySelectorAll('.research-card, .tool-card, .product-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Tool interactions
+    const toolButtons = document.querySelectorAll('.tool-btn');
+    
+    toolButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const toolCard = this.closest('.tool-card');
+            const toolName = toolCard.querySelector('h3').textContent;
+            
+            // Show mock functionality
+            alert(`${toolName} feature will be available soon! This is a preview of our upcoming tools.`);
+        });
+    });
     
 
 });
 
         // Database Q&A functionality is handled by event listeners in DOMContentLoaded
+
+// Smooth scrolling for navigation
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+}
 
 // Enhanced Research Section Generation
 function generateResearchSection() {
@@ -1246,8 +1296,62 @@ function generateResearchSection() {
         `;
         researchGrid.innerHTML += cardHTML;
     });
-    
-
 }
+
+// Add mobile navigation styles dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @media (max-width: 768px) {
+        .nav-menu {
+            position: fixed;
+            left: -100%;
+            top: 70px;
+            flex-direction: column;
+            background-color: white;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            z-index: 999;
+            padding: 2rem 0;
+        }
+        
+        .nav-menu.active {
+            left: 0;
+        }
+        
+        .nav-menu li {
+            margin: 1rem 0;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    }
+    
+    .animate {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
 
 
