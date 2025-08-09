@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Test</title>
+</head>
+<body>
+    <h1>Database Test</h1>
+    
+    <button onclick="testDatabase()">Test Database</button>
+    <div id="output"></div>
+    
+    <script src="script.js"></script>
+    <script>
+        function testDatabase() {
+            const output = document.getElementById('output');
+            output.innerHTML = '<h3>Testing Database...</h3>';
+            
+            try {
+                // Test 1: Check if database exists
+                if (!window.SKIN_CONDITIONS_DATABASE) {
+                    output.innerHTML += '<p style="color: red;">❌ Database not found!</p>';
+                    return;
+                }
+                
+                output.innerHTML += '<p style="color: green;">✅ Database found!</p>';
+                
+                // Test 2: Check database size
+                const keys = Object.keys(window.SKIN_CONDITIONS_DATABASE);
+                output.innerHTML += `<p>📊 Database has ${keys.length} conditions</p>`;
+                
+                // Test 3: Check specific keys
+                const testKeys = ['acne', 'wrinkles', 'dark_spots'];
+                testKeys.forEach(key => {
+                    if (window.SKIN_CONDITIONS_DATABASE[key]) {
+                        output.innerHTML += `<p style="color: green;">✅ Found: ${key}</p>`;
+                    } else {
+                        output.innerHTML += `<p style="color: red;">❌ Missing: ${key}</p>`;
+                    }
+                });
+                
+                // Test 4: Check acne data structure
+                const acne = window.SKIN_CONDITIONS_DATABASE['acne'];
+                if (acne) {
+                    output.innerHTML += `
+                        <h4>Acne Data:</h4>
+                        <p><strong>Name:</strong> ${acne.name}</p>
+                        <p><strong>Description:</strong> ${acne.description}</p>
+                        <p><strong>Symptoms:</strong> ${acne.symptoms.join(', ')}</p>
+                    `;
+                }
+                
+                // Test 5: Test search logic
+                output.innerHTML += '<h4>Testing Search Logic:</h4>';
+                const testQuestion = 'acne';
+                keys.forEach(key => {
+                    const includesKey = testQuestion.includes(key.toLowerCase());
+                    const includesKeyWithSpace = testQuestion.includes(key.replace('_', ' ').toLowerCase());
+                    output.innerHTML += `<p>Key "${key}": includesKey=${includesKey}, includesKeyWithSpace=${includesKeyWithSpace}</p>`;
+                });
+                
+            } catch (error) {
+                output.innerHTML += `<p style="color: red;">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Test on page load
+        window.addEventListener('load', function() {
+            console.log('Page loaded');
+            console.log('Database:', window.SKIN_CONDITIONS_DATABASE);
+        });
+    </script>
+</body>
+</html>

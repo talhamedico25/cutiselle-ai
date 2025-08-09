@@ -6,7 +6,7 @@ const AI_CONFIG = {
 };
 
 // Comprehensive Skin Conditions Database
-const SKIN_CONDITIONS_DATABASE = {
+window.SKIN_CONDITIONS_DATABASE = {
     // Common Skin Concerns
     "acne": {
         name: "Acne Vulgaris",
@@ -948,13 +948,18 @@ function showErrorState(message) {
 }
 
 // Enhanced AI Response Generation
-function generateAIResponse(question) {
+// Global AI Response Function
+window.generateAIResponse = function(question) {
+    console.log('🧠 generateAIResponse() called with:', question);
+    
     const lowerQuestion = question.toLowerCase();
     let bestMatch = null;
     let bestScore = 0;
 
     console.log('🔍 Searching for:', lowerQuestion);
     console.log('📊 Database keys:', Object.keys(SKIN_CONDITIONS_DATABASE));
+    console.log('📊 Database size:', Object.keys(SKIN_CONDITIONS_DATABASE).length);
+    console.log('🔍 First few keys:', Object.keys(SKIN_CONDITIONS_DATABASE).slice(0, 10));
 
     // Search through all conditions for matches
     Object.entries(SKIN_CONDITIONS_DATABASE).forEach(([key, condition]) => {
@@ -965,6 +970,9 @@ function generateAIResponse(question) {
             score += 15; // Highest priority for direct key matches
             console.log(`✅ Key match found: "${key}" for "${lowerQuestion}" - Score: ${score}`);
         }
+        
+        // Debug: Log the current key being checked
+        console.log(`🔍 Checking key: "${key}" against question: "${lowerQuestion}"`);
         
         // Check condition name
         if (lowerQuestion.includes(condition.name.toLowerCase())) {
@@ -1165,13 +1173,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const aiResponse = document.getElementById('aiResponse');
     
     if (askButton && questionInput && aiResponse) {
+        console.log('✅ Setting up AI Q&A event listeners');
         askButton.addEventListener('click', function() {
+            console.log('🚀 Ask AI button clicked!');
             const question = questionInput.value.trim();
+            console.log('📝 Question:', question);
+            
             if (question) {
-                const response = generateAIResponse(question);
-                aiResponse.innerHTML = response.answer;
-                aiResponse.style.display = 'block';
-                questionInput.value = '';
+                console.log('🔍 Calling generateAIResponse...');
+                try {
+                    const response = generateAIResponse(question);
+                    console.log('📊 Response received:', response);
+                    
+                    aiResponse.innerHTML = response.answer;
+                    aiResponse.style.display = 'block';
+                    questionInput.value = '';
+                    
+                    console.log('✅ Response displayed successfully');
+                } catch (error) {
+                    console.error('❌ Error in generateAIResponse:', error);
+                    aiResponse.innerHTML = `Error: ${error.message}`;
+                    aiResponse.style.display = 'block';
+                }
+            } else {
+                console.log('❌ No question provided');
             }
         });
         
@@ -1224,21 +1249,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ All event listeners attached successfully');
 });
 
-// Global AI Q&A Function
-window.askQuestion = function() {
-    const questionInput = document.getElementById('questionInput');
-    const aiResponse = document.getElementById('aiResponse');
-    
-    if (!questionInput || !aiResponse) return;
-    
-    const question = questionInput.value.trim();
-    if (question) {
-        const response = generateAIResponse(question);
-        aiResponse.innerHTML = response.answer;
-        aiResponse.style.display = 'block';
-        questionInput.value = '';
-    }
-}
+// AI Q&A functionality is handled by event listeners in DOMContentLoaded
 
 // Enhanced Research Section Generation
 function generateResearchSection() {
@@ -1271,4 +1282,23 @@ function generateResearchSection() {
     });
     
     console.log('🔬 Research section generated successfully');
+}
+
+// Test database access on load
+console.log('🧪 Testing database access on script load...');
+console.log('📊 Database available:', typeof window.SKIN_CONDITIONS_DATABASE);
+console.log('📊 Database keys:', Object.keys(window.SKIN_CONDITIONS_DATABASE || {}));
+console.log('📊 Acne data:', window.SKIN_CONDITIONS_DATABASE ? window.SKIN_CONDITIONS_DATABASE['acne'] : 'Database not loaded');
+
+// Test the search logic directly
+if (window.SKIN_CONDITIONS_DATABASE) {
+    const testQuestion = 'acne';
+    const testKeys = Object.keys(window.SKIN_CONDITIONS_DATABASE);
+    console.log('🧪 Testing search logic for:', testQuestion);
+    
+    testKeys.forEach(key => {
+        const includesKey = testQuestion.includes(key.toLowerCase());
+        const includesKeyWithSpace = testQuestion.includes(key.replace('_', ' ').toLowerCase());
+        console.log(`🔍 Key "${key}": includesKey=${includesKey}, includesKeyWithSpace=${includesKeyWithSpace}`);
+    });
 }
