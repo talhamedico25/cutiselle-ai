@@ -837,15 +837,15 @@ function displayResults(results, originalFile) {
     
     // Enhanced disclaimer with frontend technology
     const imageAnalyzerDisclaimer = isAIAnalysis 
-        ? `This AI analysis is for educational purposes only and may not be accurate. The confidence level is intentionally set low to emphasize the need for professional medical evaluation. Frontend Technology: ${AI_CONFIG.frontendTech}`
-        : `AI analysis could not determine specific condition. Frontend Technology: ${AI_CONFIG.frontendTech}`;
+        ? `Database match found. Frontend Technology: ${AI_CONFIG.frontendTech}. This analysis is for educational purposes only.`
+        : `No database match found. Frontend Technology: ${AI_CONFIG.frontendTech}.`;
 
     // Generate results HTML
     const resultsHTML = `
         <div class="analysis-header">
             <h3>Analysis Results</h3>
             <div class="confidence-badge red">
-                Low Confidence (AI Analysis - Educational Purposes Only)
+                Database Search Result (Educational Purposes Only)
             </div>
         </div>
         
@@ -890,16 +890,16 @@ function displayResults(results, originalFile) {
                 </div>
             ` : `
                 <div class="general-advice">
-                    <p>Based on the image analysis, we detected: <strong>${topResult.label}</strong></p>
-                    <p>For accurate diagnosis and treatment, please consult with a healthcare professional.</p>
+                    <p>Detected: <strong>${topResult.label}</strong></p>
+                    <p>No database match found. Consult a healthcare professional.</p>
                 </div>
             `}
         </div>
         
         <div class="disclaimer">
-            <p><strong>⚠️ Important Disclaimer:</strong></p>
+            <p><strong>⚠️ Disclaimer:</strong></p>
             <p>${imageAnalyzerDisclaimer}</p>
-            <p>This tool is for educational purposes only and should not replace professional medical advice.</p>
+            <p>Educational purposes only. Not medical advice.</p>
         </div>
     `;
 
@@ -935,36 +935,76 @@ function showErrorState(message) {
 window.generateAIResponse = function(question) {
     const lowerQuestion = question.toLowerCase();
     let bestMatch = null;
+    let bestSimilarity = 0;
 
-    // Search through all conditions for matches
+    // Search through all conditions for matches with fuzzy matching
     Object.entries(SKIN_CONDITIONS_DATABASE).forEach(([key, condition]) => {
-        // Check condition key (e.g., "acne", "wrinkles", "dark_spots")
+        // Direct key match
         if (lowerQuestion.includes(key.toLowerCase()) || lowerQuestion.includes(key.replace('_', ' ').toLowerCase())) {
             bestMatch = { key, condition };
-            return; // Exit early when we find a match
+            return; // Exit early for exact match
         }
         
-        // Check condition name
+        // Direct name match
         if (lowerQuestion.includes(condition.name.toLowerCase())) {
             bestMatch = { key, condition };
-            return; // Exit early when we find a match
+            return; // Exit early for exact match
         }
+        
+        // Fuzzy matching for spelling mistakes
+        const keyWords = key.toLowerCase().split('_');
+        const nameWords = condition.name.toLowerCase().split(' ');
+        
+        // Check if any word from the question matches any word from key or name
+        const questionWords = lowerQuestion.split(' ');
+        
+        questionWords.forEach(qWord => {
+            if (qWord.length < 3) return; // Skip very short words
+            
+            keyWords.forEach(kWord => {
+                if (kWord.length < 3) return;
+                // Check if words are similar (handle common spelling mistakes)
+                if (kWord.includes(qWord) || qWord.includes(kWord) || 
+                    kWord.startsWith(qWord) || qWord.startsWith(kWord) ||
+                    kWord.endsWith(qWord) || qWord.endsWith(kWord)) {
+                    const similarity = Math.min(qWord.length, kWord.length) / Math.max(qWord.length, kWord.length);
+                    if (similarity > bestSimilarity) {
+                        bestSimilarity = similarity;
+                        bestMatch = { key, condition };
+                    }
+                }
+            });
+            
+            nameWords.forEach(nWord => {
+                if (nWord.length < 3) return;
+                // Check if words are similar (handle common spelling mistakes)
+                if (nWord.includes(qWord) || qWord.includes(nWord) || 
+                    nWord.startsWith(qWord) || qWord.startsWith(nWord) ||
+                    nWord.endsWith(qWord) || qWord.endsWith(nWord)) {
+                    const similarity = Math.min(qWord.length, nWord.length) / Math.max(qWord.length, nWord.length);
+                    if (similarity > bestSimilarity) {
+                        bestSimilarity = similarity;
+                        bestMatch = { key, condition };
+                    }
+                }
+            });
+        });
     });
 
     if (bestMatch) {
         const { condition } = bestMatch;
         return {
-            answer: `Based on your question about "${question}", here's information about ${condition.name}:\n\n${condition.description}\n\n**Symptoms:** ${condition.symptoms.join(', ')}\n**Causes:** ${condition.causes.join(', ')}\n**Treatments:** ${condition.treatments.join(', ')}\n**Prevention:** ${condition.prevention.join(', ')}\n\n**When to see a doctor:** ${condition.doctorConsultation}\n\n**Important:** This information is for educational purposes only. Please consult a healthcare professional for proper diagnosis and treatment.`,
+            answer: `${condition.name}\n\n${condition.description}\n\n**Symptoms:** ${condition.symptoms.join(', ')}\n**Causes:** ${condition.causes.join(', ')}\n**Treatments:** ${condition.treatments.join(', ')}\n**Prevention:** ${condition.prevention.join(', ')}\n\n**When to see a doctor:** ${condition.doctorConsultation}\n\n**Severity:** ${condition.severity}\n**Age Group:** ${condition.ageGroup}\n**Prevalence:** ${condition.prevalence}`,
             confidence: 'High',
-            source: 'AI Database'
+            source: 'Database'
         };
     }
 
     // Fallback response
     return {
-        answer: `I couldn't find specific information about "${question}". Please try a different search term or consult a healthcare professional for medical advice.`,
+        answer: `No information found for "${question}". Try searching for: acne, wrinkles, dark spots, eczema, psoriasis, or other skin conditions.`,
         confidence: 'Low',
-        source: 'AI Fallback'
+        source: 'Database'
     };
 }
 
