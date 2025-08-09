@@ -5,15 +5,15 @@ let skinModel = null;
 const MODEL_URL = 'model/model.json';
 const IMAGE_SIZE = 224;
 
-// Class keys must match the model output order (HAM10000 7 classes)
+// Class keys/labels must match the model output order from the public HAM10000 model
 const CLASS_KEYS = [
-  'akiec', // Actinic keratoses and intraepithelial carcinoma
-  'bcc',   // Basal cell carcinoma
-  'bkl',   // Benign keratosis-like lesions
-  'df',    // Dermatofibroma
-  'mel',   // Melanoma
-  'nv',    // Melanocytic nevus
-  'vasc'   // Vascular lesions
+  'Actinic keratosis',
+  'Basal cell carcinoma',
+  'Benign keratosis',
+  'Dermatofibroma',
+  'Melanoma',
+  'Nevus',
+  'Vascular lesion'
 ];
 
 async function ensureModelLoaded() {
