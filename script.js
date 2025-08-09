@@ -953,6 +953,9 @@ function generateAIResponse(question) {
     let bestMatch = null;
     let bestScore = 0;
 
+    console.log('🔍 Searching for:', lowerQuestion);
+    console.log('📊 Database keys:', Object.keys(SKIN_CONDITIONS_DATABASE));
+
     // Search through all conditions for matches
     Object.entries(SKIN_CONDITIONS_DATABASE).forEach(([key, condition]) => {
         let score = 0;
@@ -960,11 +963,13 @@ function generateAIResponse(question) {
         // Check condition key (e.g., "acne", "wrinkles", "dark_spots")
         if (lowerQuestion.includes(key.toLowerCase()) || lowerQuestion.includes(key.replace('_', ' ').toLowerCase())) {
             score += 15; // Highest priority for direct key matches
+            console.log(`✅ Key match found: "${key}" for "${lowerQuestion}" - Score: ${score}`);
         }
         
         // Check condition name
         if (lowerQuestion.includes(condition.name.toLowerCase())) {
             score += 10;
+            console.log(`✅ Name match found: "${condition.name}" for "${lowerQuestion}" - Score: ${score}`);
         }
         
         // Check symptoms
@@ -991,8 +996,11 @@ function generateAIResponse(question) {
         if (score > bestScore) {
             bestScore = score;
             bestMatch = { key, condition, score };
+            console.log(`🏆 New best match: "${key}" with score ${score}`);
         }
     });
+
+    console.log(`🎯 Final result:`, bestMatch);
 
     if (bestMatch && bestMatch.score >= 3) {
         const { condition } = bestMatch;
@@ -1152,8 +1160,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // AI Q&A functionality
-    const questionInput = document.querySelector('.question-input input');
-    const askButton = document.querySelector('.question-input button');
+    const questionInput = document.getElementById('questionInput');
+    const askButton = document.getElementById('askAIButton');
     const aiResponse = document.getElementById('aiResponse');
     
     if (askButton && questionInput && aiResponse) {
@@ -1215,6 +1223,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ All event listeners attached successfully');
 });
+
+// Global AI Q&A Function
+window.askQuestion = function() {
+    const questionInput = document.getElementById('questionInput');
+    const aiResponse = document.getElementById('aiResponse');
+    
+    if (!questionInput || !aiResponse) return;
+    
+    const question = questionInput.value.trim();
+    if (question) {
+        const response = generateAIResponse(question);
+        aiResponse.innerHTML = response.answer;
+        aiResponse.style.display = 'block';
+        questionInput.value = '';
+    }
+}
 
 // Enhanced Research Section Generation
 function generateResearchSection() {
