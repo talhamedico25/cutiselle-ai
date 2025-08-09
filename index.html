@@ -51,26 +51,100 @@
         <div class="container">
             <h2 class="section-title">Research</h2>
             <div class="research-grid">
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-microscope"></i>
-                    </div>
-                    <h3>Dermatological Database</h3>
-                    <p>Our AI is trained on over 100,000 dermatological images and case studies from leading medical institutions worldwide.</p>
-                </div>
-                <div class="research-card">
+                <div class="research-card" onclick="toggleResearchContent('ai_dermatology')">
                     <div class="research-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Machine Learning Models</h3>
-                    <p>Advanced deep learning algorithms specifically designed for skin condition analysis and treatment recommendations.</p>
+                    <h3>AI in Dermatology: Revolutionizing Skin Care</h3>
+                    <p>Click to learn more about technology research.</p>
+                    <div class="research-category">Technology</div>
                 </div>
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-chart-line"></i>
+                <div class="research-content" id="research-content-ai_dermatology" style="display: none;">
+                    <div class="research-content-inner">
+                        <h3>AI in Dermatology: Revolutionizing Skin Care</h3>
+                        <p>Artificial Intelligence is transforming dermatological diagnosis and treatment. Our research explores how machine learning algorithms trained on extensive databases of skin conditions can provide preliminary analysis, assist healthcare professionals, and improve patient outcomes. The system analyzes patterns in skin images, compares them with known conditions, and provides evidence-based recommendations while maintaining appropriate confidence levels for educational purposes.</p>
+                        <button class="close-research-btn" onclick="toggleResearchContent('ai_dermatology')">Close</button>
                     </div>
-                    <h3>Clinical Validation</h3>
-                    <p>Our system has been validated through extensive clinical trials with dermatologists and skincare professionals.</p>
+                </div>
+
+                <div class="research-card" onclick="toggleResearchContent('skin_conditions_research')">
+                    <div class="research-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Comprehensive Skin Conditions Database</h3>
+                    <p>Click to learn more about medical research.</p>
+                    <div class="research-category">Medical Research</div>
+                </div>
+                <div class="research-content" id="research-content-skin_conditions_research" style="display: none;">
+                    <div class="research-content-inner">
+                        <h3>Comprehensive Skin Conditions Database</h3>
+                        <p>Our extensive database covers over 50 skin conditions, from common issues like acne and eczema to rare genetic disorders. Each condition includes detailed information about symptoms, causes, treatments, and prevention strategies. This research-based approach ensures that users receive accurate, up-to-date information while understanding the importance of professional medical consultation for proper diagnosis and treatment.</p>
+                        <button class="close-research-btn" onclick="toggleResearchContent('skin_conditions_research')">Close</button>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="toggleResearchContent('preventive_skincare')">
+                    <div class="research-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Preventive Skincare: Science-Based Approaches</h3>
+                    <p>Click to learn more about preventive medicine research.</p>
+                    <div class="research-category">Preventive Medicine</div>
+                </div>
+                <div class="research-content" id="research-content-preventive_skincare" style="display: none;">
+                    <div class="research-content-inner">
+                        <h3>Preventive Skincare: Science-Based Approaches</h3>
+                        <p>Prevention is the cornerstone of effective skincare. Our research focuses on evidence-based preventive measures including sun protection, proper cleansing techniques, and lifestyle factors that impact skin health. We examine the relationship between diet, stress, environmental factors, and skin conditions to provide comprehensive guidance for maintaining healthy skin throughout life.</p>
+                        <button class="close-research-btn" onclick="toggleResearchContent('preventive_skincare')">Close</button>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="toggleResearchContent('treatment_advancements')">
+                    <div class="research-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Advances in Skin Treatment Technologies</h3>
+                    <p>Click to learn more about treatment research.</p>
+                    <div class="research-category">Treatment Research</div>
+                </div>
+                <div class="research-content" id="research-content-treatment_advancements" style="display: none;">
+                    <div class="research-content-inner">
+                        <h3>Advances in Skin Treatment Technologies</h3>
+                        <p>The field of dermatology is rapidly evolving with new treatment modalities and technologies. Our research covers the latest developments in topical treatments, laser therapies, biologic medications, and surgical techniques. We analyze clinical outcomes, safety profiles, and effectiveness data to provide users with current information about available treatment options.</p>
+                        <button class="close-research-btn" onclick="toggleResearchContent('treatment_advancements')">Close</button>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="toggleResearchContent('genetic_skin_disorders')">
+                    <div class="research-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Genetic Skin Disorders: Understanding and Management</h3>
+                    <p>Click to learn more about genetics research.</p>
+                    <div class="research-category">Genetics Research</div>
+                </div>
+                <div class="research-content" id="research-content-genetic_skin_disorders" style="display: none;">
+                    <div class="research-content-inner">
+                        <h3>Genetic Skin Disorders: Understanding and Management</h3>
+                        <p>Genetic skin disorders present unique challenges in diagnosis and treatment. Our research explores the genetic basis of various skin conditions, inheritance patterns, and emerging treatment approaches including gene therapy and targeted medications. We provide comprehensive information about rare conditions while emphasizing the importance of specialized medical care.</p>
+                        <button class="close-research-btn" onclick="toggleResearchContent('genetic_skin_disorders')">Close</button>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="toggleResearchContent('environmental_factors')">
+                    <div class="research-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Environmental Factors in Skin Health</h3>
+                    <p>Click to learn more about environmental health research.</p>
+                    <div class="research-category">Environmental Health</div>
+                </div>
+                <div class="research-content" id="research-content-environmental_factors" style="display: none;">
+                    <div class="research-content-inner">
+                        <h3>Environmental Factors in Skin Health</h3>
+                        <p>Environmental factors significantly impact skin health and aging. Our research examines the effects of UV radiation, pollution, climate change, and occupational exposures on skin conditions. We analyze protective strategies, early detection methods, and adaptation techniques to help users understand and mitigate environmental risks to their skin health.</p>
+                        <button class="close-research-btn" onclick="toggleResearchContent('environmental_factors')">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
