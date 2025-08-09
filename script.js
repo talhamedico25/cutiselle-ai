@@ -962,7 +962,7 @@ window.generateAIResponse = function(question) {
 
     // Fallback response
     return {
-        answer: `I understand you're asking about "${question}". While I have extensive information about many skin conditions, I couldn't find a specific match for your query. I recommend:\n\n1. Consulting with a dermatologist or healthcare provider\n2. Being more specific about symptoms or condition names\n3. Using our image analysis tool for visual assessment\n\nRemember: This AI system is for educational purposes only and should not replace professional medical advice.`,
+        answer: `I couldn't find specific information about "${question}". Please try a different search term or consult a healthcare professional for medical advice.`,
         confidence: 'Low',
         source: 'AI Fallback'
     };
