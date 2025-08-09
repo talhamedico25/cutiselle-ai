@@ -1,7 +1,5 @@
 // Enhanced AI Configuration
 const AI_CONFIG = {
-    confidenceThreshold: 0.3,
-    fallbackConfidence: 0.25,
     frontendTech: "React.js, TensorFlow.js, Hugging Face API"
 };
 
@@ -712,7 +710,7 @@ async function classifyWithAI(imageBlob) {
             // Fallback to basic classification
             return [{
                 label: 'skin_condition',
-                score: AI_CONFIG.fallbackConfidence
+                score: 0.6
             }];
         }
     } catch (error) {
@@ -720,7 +718,7 @@ async function classifyWithAI(imageBlob) {
         // Fallback classification
         return [{
             label: 'skin_condition',
-            score: AI_CONFIG.fallbackConfidence
+            score: 0.6
         }];
     }
 }
@@ -807,21 +805,6 @@ function displayResults(results, originalFile) {
     }
 
     const topResult = results[0];
-    let confidence = Math.max(topResult.score || 0.8, AI_CONFIG.confidenceThreshold) * 0.6;
-    let confidenceColor = 'red';
-    let confidenceText = '';
-
-    // Determine confidence level and color
-    if (confidence >= 0.7) {
-        confidenceColor = 'green';
-        confidenceText = 'High';
-    } else if (confidence >= 0.5) {
-        confidenceColor = 'orange';
-        confidenceText = 'Medium';
-    } else {
-        confidenceColor = 'red';
-        confidenceText = 'Low';
-    }
 
     // Enhanced condition mapping
     let mappedCondition = 'unknown';
@@ -861,8 +844,8 @@ function displayResults(results, originalFile) {
     const resultsHTML = `
         <div class="analysis-header">
             <h3>Analysis Results</h3>
-            <div class="confidence-badge ${confidenceColor}">
-                ${confidenceText} Confidence ${isAIAnalysis ? '(AI Analysis - Low Confidence)' : '(Fallback Analysis)'}
+            <div class="confidence-badge red">
+                Low Confidence (AI Analysis - Educational Purposes Only)
             </div>
         </div>
         
@@ -950,67 +933,25 @@ function showErrorState(message) {
 // Enhanced AI Response Generation
 // Global AI Response Function
 window.generateAIResponse = function(question) {
-    console.log('🧠 generateAIResponse() called with:', question);
-    
     const lowerQuestion = question.toLowerCase();
     let bestMatch = null;
-    let bestScore = 0;
-
-    console.log('🔍 Searching for:', lowerQuestion);
-    console.log('📊 Database keys:', Object.keys(SKIN_CONDITIONS_DATABASE));
-    console.log('📊 Database size:', Object.keys(SKIN_CONDITIONS_DATABASE).length);
-    console.log('🔍 First few keys:', Object.keys(SKIN_CONDITIONS_DATABASE).slice(0, 10));
 
     // Search through all conditions for matches
     Object.entries(SKIN_CONDITIONS_DATABASE).forEach(([key, condition]) => {
-        let score = 0;
-        
         // Check condition key (e.g., "acne", "wrinkles", "dark_spots")
         if (lowerQuestion.includes(key.toLowerCase()) || lowerQuestion.includes(key.replace('_', ' ').toLowerCase())) {
-            score += 15; // Highest priority for direct key matches
-            console.log(`✅ Key match found: "${key}" for "${lowerQuestion}" - Score: ${score}`);
+            bestMatch = { key, condition };
+            return; // Exit early when we find a match
         }
-        
-        // Debug: Log the current key being checked
-        console.log(`🔍 Checking key: "${key}" against question: "${lowerQuestion}"`);
         
         // Check condition name
         if (lowerQuestion.includes(condition.name.toLowerCase())) {
-            score += 10;
-            console.log(`✅ Name match found: "${condition.name}" for "${lowerQuestion}" - Score: ${score}`);
-        }
-        
-        // Check symptoms
-        condition.symptoms.forEach(symptom => {
-            if (lowerQuestion.includes(symptom.toLowerCase())) {
-                score += 5;
-            }
-        });
-        
-        // Check causes
-        condition.causes.forEach(cause => {
-            if (lowerQuestion.includes(cause.toLowerCase())) {
-                score += 3;
-            }
-        });
-        
-        // Check treatments
-        condition.treatments.forEach(treatment => {
-            if (lowerQuestion.includes(treatment.toLowerCase())) {
-                score += 2;
-            }
-        });
-        
-        if (score > bestScore) {
-            bestScore = score;
-            bestMatch = { key, condition, score };
-            console.log(`🏆 New best match: "${key}" with score ${score}`);
+            bestMatch = { key, condition };
+            return; // Exit early when we find a match
         }
     });
 
-    console.log(`🎯 Final result:`, bestMatch);
-
-    if (bestMatch && bestMatch.score >= 3) {
+    if (bestMatch) {
         const { condition } = bestMatch;
         return {
             answer: `Based on your question about "${question}", here's information about ${condition.name}:\n\n${condition.description}\n\n**Symptoms:** ${condition.symptoms.join(', ')}\n**Causes:** ${condition.causes.join(', ')}\n**Treatments:** ${condition.treatments.join(', ')}\n**Prevention:** ${condition.prevention.join(', ')}\n\n**When to see a doctor:** ${condition.doctorConsultation}\n\n**Important:** This information is for educational purposes only. Please consult a healthcare professional for proper diagnosis and treatment.`,
@@ -1173,30 +1114,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const aiResponse = document.getElementById('aiResponse');
     
     if (askButton && questionInput && aiResponse) {
-        console.log('✅ Setting up AI Q&A event listeners');
         askButton.addEventListener('click', function() {
-            console.log('🚀 Ask AI button clicked!');
             const question = questionInput.value.trim();
-            console.log('📝 Question:', question);
             
             if (question) {
-                console.log('🔍 Calling generateAIResponse...');
                 try {
                     const response = generateAIResponse(question);
-                    console.log('📊 Response received:', response);
                     
                     aiResponse.innerHTML = response.answer;
                     aiResponse.style.display = 'block';
                     questionInput.value = '';
-                    
-                    console.log('✅ Response displayed successfully');
                 } catch (error) {
-                    console.error('❌ Error in generateAIResponse:', error);
+                    console.error('Error in generateAIResponse:', error);
                     aiResponse.innerHTML = `Error: ${error.message}`;
                     aiResponse.style.display = 'block';
                 }
-            } else {
-                console.log('❌ No question provided');
             }
         });
         
@@ -1246,7 +1178,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    console.log('✅ All event listeners attached successfully');
+
 });
 
 // AI Q&A functionality is handled by event listeners in DOMContentLoaded
@@ -1281,24 +1213,7 @@ function generateResearchSection() {
         researchGrid.innerHTML += cardHTML;
     });
     
-    console.log('🔬 Research section generated successfully');
+
 }
 
-// Test database access on load
-console.log('🧪 Testing database access on script load...');
-console.log('📊 Database available:', typeof window.SKIN_CONDITIONS_DATABASE);
-console.log('📊 Database keys:', Object.keys(window.SKIN_CONDITIONS_DATABASE || {}));
-console.log('📊 Acne data:', window.SKIN_CONDITIONS_DATABASE ? window.SKIN_CONDITIONS_DATABASE['acne'] : 'Database not loaded');
 
-// Test the search logic directly
-if (window.SKIN_CONDITIONS_DATABASE) {
-    const testQuestion = 'acne';
-    const testKeys = Object.keys(window.SKIN_CONDITIONS_DATABASE);
-    console.log('🧪 Testing search logic for:', testQuestion);
-    
-    testKeys.forEach(key => {
-        const includesKey = testQuestion.includes(key.toLowerCase());
-        const includesKeyWithSpace = testQuestion.includes(key.replace('_', ' ').toLowerCase());
-        console.log(`🔍 Key "${key}": includesKey=${includesKey}, includesKeyWithSpace=${includesKeyWithSpace}`);
-    });
-}
