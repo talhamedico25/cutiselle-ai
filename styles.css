@@ -17,8 +17,108 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
+/* Loading Animation Styles */
+.ai-loading-container {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 10px;
+    margin: 20px 0;
+}
 
-html {
+.loading-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.step {
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    font-weight: 500;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateX(5px);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #007bff, #28a745);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Analysis Results */
+.analysis-summary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.top-diagnosis {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.confidence-badge, .severity-badge {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.analysis-details > div {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #007bff;
+}
+
+.error-state {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+}
+
+.retry-button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px 0;
+}
+
+.ai-answer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}html {
     scroll-behavior: smooth;
 }
 
