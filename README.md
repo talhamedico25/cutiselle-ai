@@ -1,146 +1,101 @@
-# CutiselleAI - Advanced Skin Analysis Website
+# Cutiselle - Advanced Skin Analysis Website
 
 ## Overview
-CutiselleAI is a modern, AI-powered skin analysis website built with pure HTML, CSS, and JavaScript. The website provides comprehensive skin analysis capabilities, personalized skincare recommendations, and product information.
+
+Cutiselle is a modern, database-driven skin analysis website built with pure HTML, CSS, and JavaScript. The website provides comprehensive skin analysis capabilities, personalized skincare recommendations, and product information.
 
 ## Features
 
-### 🎯 Core Sections
-- **Home/Hero Section**: Beautiful gradient hero with tagline "skin. science. care"
-- **Research**: Information about AI training on dermatological databases
-- **AI Analyzer**: Interactive skin image analysis and Q&A functionality
-- **Tools**: Skincare tools and calculators
-- **Personalized Skincare Planner**: Custom routine generator
-- **Products**: Skincare product catalog with prices (Coming Soon!)
-- **About**: Company information and statistics
+- **Research**: Information about database-driven dermatological research
+- **Skin Analyzer**: Interactive skin image analysis and Q&A functionality
+- **Skincare Planner**: Personalized skincare routine recommendations
+- **Product Catalog**: Comprehensive skincare product database
 
-### 🤖 AI Features
-- **Image Analysis**: Upload skin images for AI-powered analysis
-- **Skin Condition Q&A**: Ask questions about acne, wrinkles, dark spots, etc.
-- **Personalized Recommendations**: Custom skincare routines based on skin type and concerns
-- **Mock AI Responses**: Realistic responses for various skin conditions
+## 🗄️ Database Features
 
-### 🎨 Design Features
-- **Minimal Aesthetic**: Clean, modern design with subtle animations
-- **Futura Font Logo**: Text-based logo using Futura font family
-- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
-- **Smooth Scrolling**: Seamless navigation between sections
-- **Interactive Elements**: Hover effects, loading animations, and transitions
+- **Image Analysis**: Upload skin images for database-driven analysis
+- **Text Q&A**: Ask questions about skin conditions and get detailed responses
+- **Mock Database Responses**: Realistic responses for various skin conditions
+- **Comprehensive Database**: Extensive skin conditions knowledge base
 
-### 📱 Technical Features
-- **Pure Frontend**: No backend dependencies - runs entirely in browser
-- **No Python**: Built with HTML, CSS, and JavaScript only
-- **Font Awesome Icons**: Professional iconography throughout
-- **Google Fonts**: Inter font for optimal readability
-- **Cross-browser Compatible**: Works on all modern browsers
+## 🚀 Getting Started
 
-## File Structure
-```
-CutiselleAI/
-├── index.html          # Main HTML structure
-├── styles.css          # All CSS styling
-├── script.js           # JavaScript functionality
-└── README.md           # This file
-```
+### Prerequisites
+- Modern web browser
+- Local web server (optional, for testing)
 
-## Setup Instructions
+### Installation
+1. Clone or download the repository
+2. Open `index.html` in your browser
+3. Set `index.html` as the main page
 
-1. **Download all files** to a folder on your computer
-2. **Open index.html** in any modern web browser
-3. **That's it!** The website will work immediately
+### Usage
 
-### For Local Development
-- Simply open `index.html` in your browser
-- No server required - works as static files
-- Edit HTML, CSS, or JS files and refresh browser to see changes
+#### Skin Analyzer
+1. Navigate to the Skin Analyzer section
+2. Upload an image or drag and drop
+3. Wait for database analysis results
 
-### For Web Hosting
-- Upload all files to any web hosting service
-- Set `index.html` as the main page
-- Website will work without any server-side configuration
+#### Text Q&A
+1. Go to the Q&A section
+2. Type your skin-related question
+3. Receive detailed database-driven responses
 
-## How to Use
+#### Skincare Planner
+1. Fill out the skincare assessment form
+2. Get personalized recommendations
+3. Browse available products with prices
 
-### AI Analyzer
-1. Navigate to the AI Analyzer section
-2. Upload a skin image or drag and drop
-3. Wait 3 seconds for analysis results
-4. Ask questions in the text input below
+## 📊 Database Coverage
 
-### Skincare Planner
-1. Go to the Personalized Skincare Planner section
-2. Fill out the form with your skin type, age, and concerns
-3. Click "Generate Plan" to receive a custom routine
-4. Review your personalized morning/evening routines
+The website includes a comprehensive database with detailed information for 80+ skin conditions:
 
-### Products Section
-- Browse available products with prices
-- All products currently show "Stock: 0" and "Coming Soon!" badge
-- Products include serums, moisturizers, cleansers, sunscreens, and treatments
-
-## Browser Support
-- ✅ Chrome (latest)
-- ✅ Firefox (latest) 
-- ✅ Safari (latest)
-- ✅ Edge (latest)
-- ✅ Mobile browsers
-
-## Technologies Used
-- **HTML5**: Semantic structure and accessibility
-- **CSS3**: Modern styling with CSS Grid, Flexbox, and custom properties
-- **Vanilla JavaScript**: Interactive functionality without frameworks
-- **Font Awesome**: Professional icons
-- **Google Fonts**: Inter and Futura font families
-
-## Comprehensive Skin Conditions Database
-The website includes a comprehensive database with detailed information for 20+ skin conditions:
-
-### Supported Conditions:
+- **Common Conditions** - Acne, Eczema, Psoriasis, Rosacea
+- **Rare Disorders** - Ichthyosis, Epidermolysis Bullosa, Scleroderma
+- **Skin Cancers** - Basal Cell, Squamous Cell, Melanoma
+- **Infections** - Ringworm, Impetigo, Herpes, Shingles
+- **Autoimmune** - Lupus, Vitiligo, Alopecia Areata
 - **Normal Skin** - Healthy skin maintenance and care
-- **Acne Vulgaris** - Blackheads, whiteheads, cysts, and inflammatory lesions
-- **Atopic Dermatitis (Eczema)** - Chronic inflammatory skin condition
-- **Contact Dermatitis** - Allergic and irritant reactions
-- **Rosacea** - Facial redness and visible blood vessels
-- **Psoriasis** - Autoimmune condition with scaly patches
-- **Vitiligo** - Loss of skin pigmentation
-- **Alopecia Areata** - Patchy hair loss
-- **Basal Cell Carcinoma** - Most common skin cancer
-- **Urticaria (Hives)** - Raised, itchy welts
-- **Ichthyosis** - Dry, scaly skin resembling fish scales
-- **Cutaneous Lupus** - Autoimmune skin manifestations
-- **Skin Cancer (General)** - Various malignant skin growths
-- **Acanthosis Nigricans** - Dark, velvety patches
-- **Diaper Rash** - Common infant skin irritation
-- **Epidermolysis Bullosa** - Rare genetic blistering disorder
-- **Erythema Multiforme** - Target-like lesions
-- **Erythema Nodosum** - Tender red bumps on shins
-- **Raynaud Phenomenon** - Color changes in fingers/toes
-- **Ringworm (Tinea)** - Fungal skin infection
-- **Seborrheic Dermatitis** - Scaly, greasy patches
-- **Warts** - HPV-caused skin growths
 
-### For Each Condition, the Database Includes:
-- **Detailed Description** - Medical overview and characteristics
-- **Symptoms List** - Common signs and manifestations
-- **Causes** - Underlying factors and triggers
-- **Treatment Options** - Topical, oral, and professional treatments
-- **Severity Levels** - From mild cosmetic concerns to serious medical conditions
-- **Prevention Tips** - Lifestyle and care recommendations
-- **When to See a Doctor** - Clear guidance on seeking professional help
-- **Demographics** - Common age groups and prevalence data
+## 🏗️ Project Structure
 
-## Customization
-- Edit colors in CSS `:root` variables
-- Modify AI responses in `script.js`
-- Add new products in the products section
-- Update company information in the About section
+```
+Cutiselle/
+├── index.html          # Main HTML structure
+├── styles.css          # CSS styling and animations
+├── script.js           # JavaScript functionality
+└── README.md           # Project documentation
+```
 
-## Performance
-- Fast loading with optimized CSS and JavaScript
-- Minimal external dependencies
-- Efficient animations and transitions
-- Mobile-optimized for all screen sizes
+## 🔧 Customization
 
----
+### Adding New Skin Conditions
+- Modify the `SKIN_CONDITIONS_DATABASE` in `script.js`
+- Add new conditions with detailed information
 
-**Note**: This is a demonstration website with mock AI functionality. For actual medical advice, users should consult with dermatologists or skincare professionals.
+### Modifying Database Responses
+- Edit response generation in `script.js`
+- Customize the database search logic
+
+### Styling Changes
+- Modify `styles.css` for visual updates
+- Update color schemes and layouts
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Optimized for all screen sizes
+- Touch-friendly interface
+- Cross-browser compatibility
+
+## 🚨 Important Notes
+
+**Note**: This is a demonstration website with database-driven functionality. For actual medical advice, users should consult with dermatologists or skincare professionals.
+
+## 📞 Contact
+
+For questions or support, please contact the development team.
+
+## 📄 License
+
+This project is for educational and demonstration purposes.

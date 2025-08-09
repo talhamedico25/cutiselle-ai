@@ -1147,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const askButton = document.getElementById('askButton');
         const databaseResponse = document.getElementById('databaseResponse');
     
-    if (askButton && questionInput && aiResponse) {
+    if (askButton && questionInput && databaseResponse) {
         askButton.addEventListener('click', function() {
             const question = questionInput.value.trim();
             
@@ -1155,13 +1155,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 try {
                     const response = generateDatabaseResponse(question);
                     
-                    aiResponse.innerHTML = response.answer;
-                    aiResponse.style.display = 'block';
+                    databaseResponse.innerHTML = response.answer;
+                    databaseResponse.style.display = 'block';
                     questionInput.value = '';
                 } catch (error) {
-                    console.error('Error in generateAIResponse:', error);
-                    aiResponse.innerHTML = `Error: ${error.message}`;
-                    aiResponse.style.display = 'block';
+                    console.error('Error in generateDatabaseResponse:', error);
+                    databaseResponse.innerHTML = `Error: ${error.message}`;
+                    databaseResponse.style.display = 'block';
                 }
             }
         });
