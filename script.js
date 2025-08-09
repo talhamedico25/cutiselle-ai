@@ -957,6 +957,11 @@ function generateAIResponse(question) {
     Object.entries(SKIN_CONDITIONS_DATABASE).forEach(([key, condition]) => {
         let score = 0;
         
+        // Check condition key (e.g., "acne", "wrinkles", "dark_spots")
+        if (lowerQuestion.includes(key.toLowerCase()) || lowerQuestion.includes(key.replace('_', ' ').toLowerCase())) {
+            score += 15; // Highest priority for direct key matches
+        }
+        
         // Check condition name
         if (lowerQuestion.includes(condition.name.toLowerCase())) {
             score += 10;
