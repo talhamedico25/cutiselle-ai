@@ -1038,7 +1038,47 @@ const SKIN_CONDITIONS_DATABASE = {
         doctorConsultation: 'Important for proper management.',
         ageGroup: 'newborns to adults',
         prevalence: 'uncommon'
-    }
+    },
+    
+    'hemangioma': {
+        name: 'Hemangioma',
+        description: 'A benign tumor of blood vessels that appears as a red birthmark',
+        symptoms: ['Red or purple raised patches', 'May grow rapidly in first year', 'Usually regress by age 5-10', 'Soft and compressible'],
+        causes: ['Abnormal blood vessel growth', 'Genetic factors', 'Hormonal influences'],
+        treatments: ['Observation', 'Beta-blocker medications', 'Laser therapy', 'Surgical removal if needed'],
+        severity: 'Low',
+        prevention: 'Cannot be prevented',
+        doctorConsultation: 'Consult pediatrician or dermatologist',
+        ageGroup: 'Infants and children',
+        prevalence: '5-10% of infants'
+    },
+    
+    'pyogenic_granuloma': {
+        name: 'Pyogenic Granuloma',
+        description: 'A small, red, benign growth that bleeds easily',
+        symptoms: ['Small red bump', 'Rapid growth', 'Easy bleeding', 'May ulcerate'],
+        causes: ['Minor trauma', 'Hormonal changes', 'Certain medications', 'Pregnancy'],
+        treatments: ['Surgical removal', 'Electrocautery', 'Laser therapy', 'Cryotherapy'],
+        severity: 'Low',
+        prevention: 'Avoid trauma to skin', 'Regular skin checks'],
+        doctorConsultation: 'Consult dermatologist for removal',
+        ageGroup: 'All ages',
+        prevalence: 'Common'
+    },
+    
+    'dermatosis_papulosa_nigra': {
+        name: 'Dermatosis Papulosa Nigra',
+        description: 'Small, dark, benign growths commonly found on the face and neck',
+        symptoms: ['Small dark brown to black bumps', 'Usually on face and neck', 'Smooth surface', 'No pain or itching'],
+        causes: ['Genetic factors', 'More common in darker skin', 'Age-related'],
+        treatments: ['Electrocautery', 'Cryotherapy', 'Laser removal', 'Surgical excision'],
+        severity: 'Low',
+        prevention: 'Cannot be prevented', 'Sun protection may help'],
+        doctorConsultation: 'Consult dermatologist for cosmetic removal',
+        ageGroup: 'Adults',
+        prevalence: 'Common in darker skin types'
+    },
+    
     'diaper_rash': {
         name: 'Diaper Rash',
         description: 'A common skin irritation in the diaper area of infants and toddlers.',
@@ -1098,6 +1138,19 @@ const SKIN_CONDITIONS_DATABASE = {
         doctorConsultation: 'Consult if severe symptoms or underlying conditions suspected.',
         ageGroup: 'adults',
         prevalence: 'uncommon'
+    },
+    
+    'lichen_planus': {
+        name: 'Lichen Planus',
+        description: 'An inflammatory skin condition that causes flat-topped, purple, itchy bumps',
+        symptoms: ['Purple flat-topped bumps', 'Itching', 'White lacy pattern', 'Can affect mouth and genitals'],
+        causes: ['Autoimmune reaction', 'Unknown triggers', 'Stress', 'Certain medications'],
+        treatments: ['Topical corticosteroids', 'Oral medications', 'Phototherapy', 'Avoiding triggers'],
+        severity: 'Moderate',
+        prevention: 'Cannot be prevented', 'Stress management may help'],
+        doctorConsultation: 'Consult dermatologist for proper diagnosis and treatment',
+        ageGroup: 'Adults 30-60',
+        prevalence: 'Uncommon'
     }
 };
 
@@ -1111,7 +1164,7 @@ const RESEARCH_TOPICS = {
     },
     'skin_conditions_research': {
         title: 'Comprehensive Skin Conditions Database',
-        content: 'Our extensive database covers over 50 skin conditions, from common issues like acne and eczema to rare genetic disorders. Each condition includes detailed information about symptoms, causes, treatments, and prevention strategies. This research-based approach ensures that users receive accurate, up-to-date information while understanding the importance of professional medical consultation for proper diagnosis and treatment.',
+        content: 'Our extensive database covers over 80 skin conditions, from common issues like acne and eczema to rare genetic disorders. Each condition includes detailed information about symptoms, causes, treatments, and prevention strategies. This research-based approach ensures that users receive accurate, up-to-date information while understanding the importance of professional medical consultation for proper diagnosis and treatment.',
         image: 'fas fa-database',
         category: 'Medical Research'
     },
@@ -1553,7 +1606,7 @@ function scrollToSection(sectionId) {
 // Enhanced Event Listeners
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Enhanced AI Skin Analysis System Loaded');
-    console.log(`📊 Database contains ${Object.keys(SKIN_CONDITIONS_DATABASE).length} skin conditions`);
+    console.log(`📊 Database contains ${Object.keys(SKIN_CONDITIONS_DATABASE).length} skin conditions (80+ comprehensive conditions)`);
     console.log(`🔬 Research topics: ${Object.keys(RESEARCH_TOPICS).length} available`);
     
     // Initialize research section
