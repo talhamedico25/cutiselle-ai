@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CutiselleAI - Advanced Skin Analysis & Care</title>
+            <title>Cutiselle - Advanced Skin Analysis & Care</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
                     <a href="#home">Home</a>
                     <a href="#about-me">About Me</a>
                     <a href="#research">Research</a>
-                    <a href="#ai-analyzer">AI Analyzer</a>
+                    <a href="#analyzer">Skin Analyzer</a>
                     <a href="#skincare-planner">Skincare Planner</a>
                     <a href="#products">Products</a>
                 </nav>
@@ -39,9 +39,9 @@
     <section class="hero">
         <div class="hero-content">
             <h2>CutisElle</h2>
-            <p class="tagline">AI-Powered Skin Analysis & Dermatology Research</p>
-            <p class="hero-description">Advanced artificial intelligence meets medical expertise for comprehensive skin condition analysis and research insights.</p>
-            <button class="cta-button" onclick="scrollToSection('ai-analyzer')">Start Analysis</button>
+            <p class="tagline">Database-Driven Skin Analysis & Dermatology Research</p>
+                          <p class="hero-description">Advanced database technology meets medical expertise for comprehensive skin condition analysis and research insights.</p>
+            <button class="cta-button" onclick="scrollToSection('analyzer')">Start Analysis</button>
         </div>
     </section>
 
@@ -73,7 +73,7 @@
                         <div class="skill-item">
                             <i class="fas fa-code"></i>
                             <h4>Programmer</h4>
-                            <p>Full-stack developer with expertise in creating AI-powered applications, web development, and software solutions. Passionate about leveraging technology to solve real-world medical challenges.</p>
+                            <p>Full-stack developer with expertise in creating database-driven applications, web development, and software solutions. Passionate about leveraging technology to solve real-world medical challenges.</p>
                         </div>
                         
                         <div class="skill-item">
@@ -100,7 +100,7 @@
                     
                     <div class="project-vision">
                         <h4>Project Vision</h4>
-                        <p>CutisElle was born from my desire to bridge the gap between cutting-edge AI technology and practical dermatological knowledge. As a medical student, I understand the importance of accessible, accurate information about skin conditions. This platform serves as both an educational tool and a demonstration of how technology can enhance medical understanding and patient care.</p>
+                        <p>CutisElle was born from my desire to bridge the gap between cutting-edge database technology and practical dermatological knowledge. As a medical student, I understand the importance of accessible, accurate information about skin conditions. This platform serves as both an educational tool and a demonstration of how technology can enhance medical understanding and patient care.</p>
                     </div>
                 </div>
             </div>
@@ -112,19 +112,19 @@
         <div class="container">
             <h2 class="section-title">Research</h2>
             <div class="research-grid">
-                <div class="research-card" onclick="toggleResearchContent('ai_dermatology')">
-                    <div class="research-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI in Dermatology: Revolutionizing Skin Care</h3>
+                        <div class="research-card" onclick="toggleResearchContent('database_dermatology')">
+            <div class="research-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <h3>Database-Driven Dermatology: Revolutionizing Skin Care</h3>
                     <p>Click to learn more about technology research.</p>
                     <div class="research-category">Technology</div>
                 </div>
-                <div class="research-content" id="research-content-ai_dermatology" style="display: none;">
+                <div class="research-content" id="research-content-database_dermatology" style="display: none;">
                     <div class="research-content-inner">
-                        <h3>AI in Dermatology: Revolutionizing Skin Care</h3>
-                        <p>Artificial Intelligence is transforming dermatological diagnosis and treatment. Our research explores how machine learning algorithms trained on extensive databases of skin conditions can provide preliminary analysis, assist healthcare professionals, and improve patient outcomes. The system analyzes patterns in skin images, compares them with known conditions, and provides evidence-based recommendations while maintaining appropriate confidence levels for educational purposes.</p>
-                        <button class="close-research-btn" onclick="toggleResearchContent('ai_dermatology')">Close</button>
+                        <h3>Database-Driven Dermatology: Revolutionizing Skin Care</h3>
+                        <p>Comprehensive databases are transforming dermatological diagnosis and treatment. Our research explores how extensive databases of skin conditions can provide preliminary analysis, assist healthcare professionals, and improve patient outcomes. The system analyzes patterns in skin images, compares them with known conditions, and provides evidence-based recommendations while maintaining appropriate confidence levels for educational purposes.</p>
+                        <button class="close-research-btn" onclick="toggleResearchContent('database_dermatology')">Close</button>
                     </div>
                 </div>
 
@@ -211,10 +211,10 @@
         </div>
     </section>
 
-    <!-- AI Analyzer Section -->
+    <!-- Skin Analyzer Section -->
     <section id="analyzer" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">AI Analyzer</h2>
+            <h2 class="section-title">Skin Analyzer</h2>
             <div class="analyzer-container">
                 <div class="upload-area">
                     <div class="upload-box" id="uploadBox">
@@ -229,12 +229,12 @@
                     </div>
                 </div>
                 <div class="question-area">
-                    <h3>Ask Our AI About Your Skin</h3>
+                    <h3>Ask About Your Skin</h3>
                     <div class="question-input">
                         <input type="text" id="questionInput" placeholder="Ask about acne, wrinkles, dark spots, or any skin concern...">
-                        <button id="askAIButton">Ask AI</button>
+                        <button id="askButton">Ask</button>
                     </div>
-                    <div class="ai-response" id="aiResponse"></div>
+                    <div class="database-response" id="databaseResponse"></div>
                 </div>
             </div>
         </div>
@@ -398,13 +398,13 @@
     <!-- About Section -->
     <section id="about" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">About CutiselleAI</h2>
+            <h2 class="section-title">About Cutiselle</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Revolutionizing Skincare with AI</h3>
-                    <p>CutiselleAI represents the next generation of skincare technology, combining advanced artificial intelligence with dermatological expertise to provide personalized skin analysis and care recommendations.</p>
-                    <p>Our AI system has been trained on extensive databases of skin conditions, treatments, and outcomes, allowing us to provide accurate analysis and personalized recommendations for a wide range of skin concerns from mild to severe conditions.</p>
-                    <p>We believe that everyone deserves access to advanced skincare knowledge and personalized care, which is why we've made our AI-powered platform accessible and easy to use for everyone.</p>
+                    <h3>Revolutionizing Skincare with Database Technology</h3>
+                    <p>Cutiselle represents the next generation of skincare technology, combining comprehensive databases with dermatological expertise to provide personalized skin analysis and care recommendations.</p>
+                    <p>Our system has been built on extensive databases of skin conditions, treatments, and outcomes, allowing us to provide accurate analysis and personalized recommendations for a wide range of skin concerns from mild to severe conditions.</p>
+                    <p>We believe that everyone deserves access to advanced skincare knowledge and personalized care, which is why we've made our database-powered platform accessible and easy to use for everyone.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat">
@@ -429,15 +429,15 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>CutiselleAI</h3>
-                    <p>Advanced AI-powered skin analysis and personalized skincare solutions.</p>
+                    <h3>Cutiselle</h3>
+                    <p>Advanced database-driven skin analysis and personalized skincare solutions.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#research">Research</a></li>
-                        <li><a href="#analyzer">AI Analyzer</a></li>
+                        <li><a href="#analyzer">Skin Analyzer</a></li>
                         <li><a href="#tools">Tools</a></li>
                     </ul>
                 </div>
@@ -466,7 +466,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 CutiselleAI. All rights reserved.</p>
+                <p>&copy; 2025 Cutiselle. All rights reserved.</p>
             </div>
         </div>
     </footer>

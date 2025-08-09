@@ -1,5 +1,5 @@
-// Enhanced AI Configuration
-const AI_CONFIG = {
+// Enhanced Database Configuration
+const DATABASE_CONFIG = {
     frontendTech: "Database-driven Analysis"
 };
 
@@ -646,10 +646,10 @@ window.SKIN_CONDITIONS_DATABASE = {
 
 // Research Topics Data
 const RESEARCH_TOPICS = {
-    'ai_dermatology': {
-        title: 'AI in Dermatology: Revolutionizing Skin Care',
-        content: 'Artificial Intelligence is transforming dermatological diagnosis and treatment. Our research explores how machine learning algorithms trained on extensive databases of skin conditions can provide preliminary analysis, assist healthcare professionals, and improve patient outcomes. The system analyzes patterns in skin images, compares them with known conditions, and provides evidence-based recommendations while maintaining appropriate confidence levels for educational purposes.',
-        image: 'fas fa-brain',
+    'database_dermatology': {
+        title: 'Database-Driven Dermatology: Revolutionizing Skin Care',
+        content: 'Comprehensive databases are transforming dermatological diagnosis and treatment. Our research explores how extensive databases of skin conditions can provide preliminary analysis, assist healthcare professionals, and improve patient outcomes. The system analyzes patterns in skin images, compares them with known conditions, and provides evidence-based recommendations while maintaining appropriate confidence levels for educational purposes.',
+        image: 'fas fa-database',
         category: 'Technology'
     },
     'skin_conditions_research': {
@@ -685,7 +685,7 @@ const RESEARCH_TOPICS = {
 };
 
 // Database-driven Image Classification Function
-async function classifyWithAI(imageBlob) {
+async function classifyWithDatabase(imageBlob) {
     try {
         console.log('🔍 Analyzing image with database...');
         
@@ -775,7 +775,7 @@ async function analyzeImage(file) {
         const processedImage = await preprocessImage(file);
         
         // Analyze with database
-        const results = await classifyWithAI(processedImage);
+        const results = await classifyWithDatabase(processedImage);
         
         // Display results
         displayResults(results, file);
@@ -830,9 +830,9 @@ function displayResults(results, originalFile) {
     const isDatabaseMatch = conditionInfo && mappedCondition !== 'unknown';
     
     // Enhanced disclaimer with frontend technology
-    const imageAnalyzerDisclaimer = isDatabaseMatch 
-        ? `Database match found. Frontend Technology: ${AI_CONFIG.frontendTech}. This analysis is for educational purposes only.`
-        : `No database match found. Frontend Technology: ${AI_CONFIG.frontendTech}.`;
+            const imageAnalyzerDisclaimer = isDatabaseMatch
+            ? `Database match found. Frontend Technology: ${DATABASE_CONFIG.frontendTech}. This analysis is for educational purposes only.`
+            : `No database match found. Frontend Technology: ${DATABASE_CONFIG.frontendTech}.`;
 
     // Generate results HTML
     const resultsHTML = `
@@ -924,9 +924,9 @@ function showErrorState(message) {
     analysisResult.style.display = 'block';
 }
 
-// Enhanced AI Response Generation
-// Global AI Response Function
-window.generateAIResponse = function(question) {
+// Enhanced Database Response Generation
+// Global Database Response Function
+window.generateDatabaseResponse = function(question) {
     const lowerQuestion = question.toLowerCase();
     let bestMatch = null;
     let bestSimilarity = 0;
@@ -1096,7 +1096,7 @@ function scrollToSection(sectionId) {
 
 // Enhanced Event Listeners
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Enhanced AI Skin Analysis System Loaded');
+            console.log('🚀 Enhanced Database-Driven Skin Analysis System Loaded');
     console.log(`📊 Database contains ${Object.keys(SKIN_CONDITIONS_DATABASE).length} skin conditions`);
     console.log(`🔬 Research topics: ${Object.keys(RESEARCH_TOPICS).length} available`);
     
@@ -1142,10 +1142,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // AI Q&A functionality
-    const questionInput = document.getElementById('questionInput');
-    const askButton = document.getElementById('askAIButton');
-    const aiResponse = document.getElementById('aiResponse');
+            // Database Q&A functionality
+        const questionInput = document.getElementById('questionInput');
+        const askButton = document.getElementById('askButton');
+        const databaseResponse = document.getElementById('databaseResponse');
     
     if (askButton && questionInput && aiResponse) {
         askButton.addEventListener('click', function() {
@@ -1153,7 +1153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (question) {
                 try {
-                    const response = generateAIResponse(question);
+                    const response = generateDatabaseResponse(question);
                     
                     aiResponse.innerHTML = response.answer;
                     aiResponse.style.display = 'block';
@@ -1215,7 +1215,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// AI Q&A functionality is handled by event listeners in DOMContentLoaded
+        // Database Q&A functionality is handled by event listeners in DOMContentLoaded
 
 // Enhanced Research Section Generation
 function generateResearchSection() {
