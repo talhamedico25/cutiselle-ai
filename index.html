@@ -21,6 +21,7 @@
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#research">Research</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#skin-conditions">Skin Conditions</a></li>
                     <li><a href="#analyzer">AI Analyzer</a></li>
                     <li><a href="#tools">Tools</a></li>
@@ -175,8 +176,60 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section id="blog" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Latest Dermatology Research</h2>
+            <p class="section-subtitle">Stay updated with the latest findings from top dermatology journals and groundbreaking research in skin health.</p>
+            
+            <div class="blog-filters">
+                <div class="filter-group">
+                    <label for="blogCategoryFilter">Category:</label>
+                    <select id="blogCategoryFilter" onchange="filterBlogPosts()">
+                        <option value="">All Categories</option>
+                        <option value="treatment">Treatment Advances</option>
+                        <option value="diagnosis">Diagnosis & AI</option>
+                        <option value="prevention">Prevention & Lifestyle</option>
+                        <option value="genetics">Genetics & Research</option>
+                        <option value="clinical">Clinical Studies</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="blogJournalFilter">Journal:</label>
+                    <select id="blogJournalFilter" onchange="filterBlogPosts()">
+                        <option value="">All Journals</option>
+                        <option value="JAAD">Journal of the American Academy of Dermatology</option>
+                        <option value="BJD">British Journal of Dermatology</option>
+                        <option value="JID">Journal of Investigative Dermatology</option>
+                        <option value="Dermatology">Dermatology</option>
+                        <option value="Nature">Nature Dermatology</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="blogYearFilter">Year:</label>
+                    <select id="blogYearFilter" onchange="filterBlogPosts()">
+                        <option value="">All Years</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog posts will be populated by JavaScript -->
+            </div>
+
+            <div class="blog-pagination">
+                <button class="pagination-btn" onclick="loadMorePosts()" id="loadMoreBtn">
+                    <i class="fas fa-plus"></i> Load More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Skin Conditions Database Section -->
-    <section id="skin-conditions" class="section bg-light">
+    <section id="skin-conditions" class="section">
         <div class="container">
             <h2 class="section-title">Comprehensive Skin Conditions Database</h2>
             <p class="section-subtitle">Explore our extensive database of 80+ skin conditions with detailed information, symptoms, and treatment options.</p>
@@ -201,7 +254,7 @@
     </section>
 
     <!-- AI Analyzer Section -->
-    <section id="analyzer" class="section">
+    <section id="analyzer" class="section bg-light">
         <div class="container">
             <h2 class="section-title">AI Analyzer</h2>
             <div class="analyzer-container">
@@ -230,7 +283,7 @@
     </section>
 
     <!-- Tools Section -->
-    <section id="tools" class="section bg-light">
+    <section id="tools" class="section">
         <div class="container">
             <h2 class="section-title">Tools</h2>
             <div class="tools-grid">
@@ -263,7 +316,7 @@
     </section>
 
     <!-- Skincare Planner Section -->
-    <section id="planner" class="section">
+    <section id="planner" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Personalized Skincare Planner</h2>
             <div class="planner-container">
@@ -313,7 +366,7 @@
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="section bg-light">
+    <section id="products" class="section">
         <div class="container">
             <div class="products-header">
                 <h2 class="section-title">Products</h2>
@@ -385,7 +438,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="section bg-light">
         <div class="container">
             <h2 class="section-title">About CutiselleAI</h2>
             <div class="about-content">
@@ -451,6 +504,7 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#research">Research</a></li>
+                        <li><a href="#blog">Blog</a></li>
                         <li><a href="#skin-conditions">Skin Conditions</a></li>
                         <li><a href="#analyzer">AI Analyzer</a></li>
                     </ul>

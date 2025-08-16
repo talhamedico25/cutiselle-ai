@@ -1,3 +1,137 @@
+// Blog Posts Database
+const blogPosts = [
+    {
+        id: 1,
+        title: "Breakthrough in Psoriasis Treatment: New Biologic Shows 90% Clearance Rate",
+        excerpt: "A revolutionary biologic therapy targeting IL-23 has demonstrated unprecedented efficacy in treating moderate-to-severe psoriasis, with 90% of patients achieving clear or almost clear skin within 16 weeks.",
+        content: "The latest clinical trial results published in the Journal of the American Academy of Dermatology reveal a groundbreaking advancement in psoriasis treatment. The new biologic therapy, which specifically targets interleukin-23 (IL-23), has shown remarkable efficacy in treating moderate-to-severe psoriasis patients. The phase 3 clinical trial involved over 1,200 participants across multiple centers worldwide. Results showed that 90% of patients achieved a 90% improvement in their Psoriasis Area and Severity Index (PASI 90) score within 16 weeks of treatment. Additionally, 75% of patients achieved complete skin clearance (PASI 100). The treatment also demonstrated excellent safety profiles with minimal side effects compared to existing therapies. This represents a significant advancement in the management of psoriasis and offers new hope for patients who have not responded adequately to current treatments.",
+        category: "treatment",
+        journal: "JAAD",
+        year: "2025",
+        author: "Dr. Sarah Chen et al.",
+        date: "2025-01-15",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=250&fit=crop",
+        tags: ["psoriasis", "biologic", "IL-23", "clinical trial"]
+    },
+    {
+        id: 2,
+        title: "AI-Powered Melanoma Detection Achieves Dermatologist-Level Accuracy",
+        excerpt: "Deep learning algorithms trained on over 100,000 dermatoscopic images now match the diagnostic accuracy of board-certified dermatologists in detecting melanoma.",
+        content: "A landmark study published in Nature Dermatology demonstrates that artificial intelligence systems can now achieve diagnostic accuracy comparable to board-certified dermatologists in detecting melanoma. The research team trained deep learning algorithms on a dataset of over 100,000 high-quality dermatoscopic images from multiple international centers. The AI system was then tested against 58 board-certified dermatologists from 17 countries in a blinded study. Results showed that the AI system achieved a sensitivity of 95.1% and specificity of 94.5% in detecting melanoma, matching the performance of the dermatologists. The system also demonstrated superior performance in detecting early-stage melanomas, which are often more challenging to diagnose. This breakthrough has significant implications for improving early detection rates and reducing melanoma mortality, particularly in areas with limited access to dermatological expertise.",
+        category: "diagnosis",
+        journal: "Nature",
+        year: "2025",
+        author: "Dr. Michael Rodriguez et al.",
+        date: "2025-01-10",
+        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop",
+        tags: ["AI", "melanoma", "diagnosis", "deep learning"]
+    },
+    {
+        id: 3,
+        title: "Novel Gene Therapy Shows Promise for Epidermolysis Bullosa",
+        excerpt: "First successful gene therapy treatment for recessive dystrophic epidermolysis bullosa demonstrates significant wound healing and improved quality of life.",
+        content: "A groundbreaking gene therapy approach for recessive dystrophic epidermolysis bullosa (RDEB) has shown remarkable results in a phase 1/2 clinical trial. The therapy involves using a modified virus to deliver the correct COL7A1 gene to skin cells, which is defective in RDEB patients. Results published in the Journal of Investigative Dermatology show that treated patients experienced significant improvements in wound healing, with some achieving complete closure of chronic wounds that had persisted for years. The therapy also led to improved skin strength and reduced blistering frequency. Most importantly, patients reported substantial improvements in quality of life, including reduced pain and improved mobility. This represents the first successful gene therapy for a genetic skin disorder and opens new possibilities for treating other inherited skin conditions.",
+        category: "genetics",
+        journal: "JID",
+        year: "2024",
+        author: "Dr. Elena Martinez et al.",
+        date: "2024-12-20",
+        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop",
+        tags: ["gene therapy", "epidermolysis bullosa", "COL7A1", "genetic disorder"]
+    },
+    {
+        id: 4,
+        title: "Environmental Pollution Linked to Accelerated Skin Aging",
+        excerpt: "New research reveals that air pollution exposure significantly accelerates skin aging and increases the risk of inflammatory skin conditions.",
+        content: "A comprehensive study published in the British Journal of Dermatology has established a clear link between environmental pollution and accelerated skin aging. The research, conducted over 10 years with over 5,000 participants, found that exposure to particulate matter (PM2.5) and polycyclic aromatic hydrocarbons (PAHs) was associated with increased signs of aging, including wrinkles, age spots, and loss of skin elasticity. The study also found that pollution exposure increased the risk of inflammatory skin conditions such as eczema and psoriasis. Researchers discovered that pollution particles can penetrate the skin barrier and trigger inflammatory responses, leading to oxidative stress and collagen degradation. The findings highlight the importance of protective measures, including antioxidant skincare products and barrier protection, particularly for individuals living in urban areas with high pollution levels.",
+        category: "prevention",
+        journal: "BJD",
+        year: "2024",
+        author: "Dr. James Wilson et al.",
+        date: "2024-12-15",
+        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=250&fit=crop",
+        tags: ["pollution", "aging", "environmental", "prevention"]
+    },
+    {
+        id: 5,
+        title: "Revolutionary Atopic Dermatitis Treatment Shows Long-term Efficacy",
+        excerpt: "New JAK inhibitor demonstrates sustained improvement in atopic dermatitis symptoms with minimal side effects over 2-year follow-up period.",
+        content: "A long-term study of a novel JAK inhibitor for atopic dermatitis has shown sustained efficacy and safety over a 2-year period. Published in the Journal of the American Academy of Dermatology, the study followed 800 patients with moderate-to-severe atopic dermatitis who received the treatment. Results showed that 85% of patients maintained at least 75% improvement in their Eczema Area and Severity Index (EASI-75) score at 2 years. Importantly, the treatment demonstrated an excellent safety profile with no significant increase in adverse events over time. Patients also reported sustained improvements in quality of life measures, including sleep quality and daily activities. The study provides strong evidence for the long-term effectiveness of JAK inhibitors in managing atopic dermatitis and supports their use as a first-line treatment option for severe cases.",
+        category: "treatment",
+        journal: "JAAD",
+        year: "2024",
+        author: "Dr. Lisa Thompson et al.",
+        date: "2024-12-10",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=250&fit=crop",
+        tags: ["atopic dermatitis", "JAK inhibitor", "eczema", "long-term study"]
+    },
+    {
+        id: 6,
+        title: "Microbiome-Based Therapy Shows Promise for Acne Treatment",
+        excerpt: "Novel probiotic-based treatment targeting skin microbiome demonstrates significant reduction in acne lesions and improved skin barrier function.",
+        content: "A revolutionary approach to acne treatment using microbiome-based therapy has shown promising results in a clinical trial. The treatment involves applying a carefully selected probiotic formulation that restores the balance of beneficial bacteria on the skin. Results published in Dermatology show that patients treated with the microbiome therapy experienced a 70% reduction in inflammatory acne lesions compared to placebo. The treatment also improved skin barrier function and reduced inflammation markers. Unlike traditional acne treatments that can cause dryness and irritation, the microbiome therapy was well-tolerated with minimal side effects. The study suggests that targeting the skin microbiome could represent a new paradigm in acne treatment, offering a more natural and sustainable approach to managing this common skin condition.",
+        category: "treatment",
+        journal: "Dermatology",
+        year: "2024",
+        author: "Dr. Anna Kim et al.",
+        date: "2024-12-05",
+        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop",
+        tags: ["acne", "microbiome", "probiotics", "skin barrier"]
+    },
+    {
+        id: 7,
+        title: "Breakthrough in Vitiligo Treatment: New Repigmentation Therapy",
+        excerpt: "Novel combination therapy achieves significant repigmentation in vitiligo patients, offering new hope for this challenging condition.",
+        content: "A new combination therapy for vitiligo has achieved unprecedented results in repigmentation, according to a study published in the British Journal of Dermatology. The treatment combines a JAK inhibitor with targeted phototherapy and has shown remarkable efficacy in restoring skin color in vitiligo patients. The clinical trial involved 200 patients with stable vitiligo affecting 5-50% of their body surface area. Results showed that 65% of patients achieved at least 50% repigmentation within 6 months, with 40% achieving 75% or greater repigmentation. The treatment was particularly effective on facial and hand lesions, areas that are typically most challenging to treat. The therapy works by targeting the immune system's attack on melanocytes while stimulating the remaining pigment cells to proliferate and migrate to depigmented areas.",
+        category: "treatment",
+        journal: "BJD",
+        year: "2024",
+        author: "Dr. David Park et al.",
+        date: "2024-11-30",
+        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop",
+        tags: ["vitiligo", "repigmentation", "JAK inhibitor", "phototherapy"]
+    },
+    {
+        id: 8,
+        title: "AI-Powered Skin Cancer Screening Program Reduces Mortality by 30%",
+        excerpt: "Large-scale implementation of AI-assisted skin cancer screening shows significant reduction in melanoma mortality rates.",
+        content: "A comprehensive study evaluating the impact of AI-powered skin cancer screening programs has demonstrated a 30% reduction in melanoma mortality rates. The research, published in Nature Dermatology, analyzed data from over 100,000 patients across multiple healthcare systems that implemented AI-assisted screening. The AI system was used to triage suspicious lesions, allowing dermatologists to focus on high-risk cases while reducing unnecessary biopsies. The program also improved early detection rates, with 85% of melanomas being detected at stage 0 or 1, compared to 65% in traditional screening programs. The study highlights the potential of AI to transform skin cancer screening on a population level, particularly in areas with limited access to dermatological expertise. The findings support the integration of AI tools into routine skin cancer screening protocols.",
+        category: "diagnosis",
+        journal: "Nature",
+        year: "2024",
+        author: "Dr. Robert Johnson et al.",
+        date: "2024-11-25",
+        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop",
+        tags: ["AI screening", "melanoma", "mortality", "early detection"]
+    },
+    {
+        id: 9,
+        title: "Novel Drug Delivery System for Psoriasis: Nanoparticle Technology",
+        excerpt: "Innovative nanoparticle-based drug delivery system shows enhanced efficacy and reduced side effects in psoriasis treatment.",
+        content: "A breakthrough in drug delivery technology for psoriasis treatment has been reported in the Journal of Investigative Dermatology. Researchers have developed a nanoparticle-based delivery system that targets inflamed skin cells more precisely than traditional topical treatments. The nanoparticles are designed to release medication only in areas of active inflammation, reducing systemic absorption and side effects. Clinical trials showed that the nanoparticle treatment achieved 80% improvement in psoriasis symptoms compared to 60% with standard topical treatments. The new delivery system also reduced the frequency of application from twice daily to once daily, improving patient compliance. This technology represents a significant advancement in topical drug delivery and could be applied to other inflammatory skin conditions.",
+        category: "treatment",
+        journal: "JID",
+        year: "2024",
+        author: "Dr. Maria Garcia et al.",
+        date: "2024-11-20",
+        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop",
+        tags: ["nanoparticles", "drug delivery", "psoriasis", "topical treatment"]
+    },
+    {
+        id: 10,
+        title: "Lifestyle Factors and Skin Health: Comprehensive Meta-Analysis",
+        excerpt: "Large-scale meta-analysis reveals the impact of diet, exercise, and stress management on skin health and aging.",
+        content: "A comprehensive meta-analysis of over 50 studies examining the relationship between lifestyle factors and skin health has been published in the British Journal of Dermatology. The analysis included data from over 100,000 participants and examined the effects of diet, exercise, stress management, and sleep on various skin conditions and aging. Results showed that a Mediterranean diet rich in antioxidants was associated with reduced signs of aging and improved skin barrier function. Regular exercise was linked to better skin circulation and reduced inflammation. Stress management techniques, including meditation and yoga, were associated with improved outcomes in inflammatory skin conditions. The study provides strong evidence for the importance of lifestyle modifications in maintaining skin health and preventing skin aging.",
+        category: "prevention",
+        journal: "BJD",
+        year: "2024",
+        author: "Dr. Jennifer Lee et al.",
+        date: "2024-11-15",
+        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=250&fit=crop",
+        tags: ["lifestyle", "diet", "exercise", "stress management"]
+    }
+];
+
 // Comprehensive Skin Conditions Database
 const skinConditions = [
     // Normal Skin Conditions
@@ -104,10 +238,142 @@ const skinConditions = [
     { name: "Hypertrophic Scar", category: "cancer", description: "Raised scar that stays within wound boundaries", symptoms: "Raised, red scar", treatments: "Silicone sheets, steroid injections, laser therapy" }
 ];
 
-// Initialize skin conditions on page load
+// Initialize blog posts and skin conditions on page load
 document.addEventListener('DOMContentLoaded', function() {
+    displayBlogPosts();
     displaySkinConditions();
 });
+
+// Blog functionality
+let currentBlogPage = 1;
+const postsPerPage = 6;
+let filteredBlogPosts = [...blogPosts];
+
+// Display blog posts
+function displayBlogPosts() {
+    const grid = document.getElementById('blogGrid');
+    if (!grid) return;
+    
+    const startIndex = (currentBlogPage - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    const postsToShow = filteredBlogPosts.slice(startIndex, endIndex);
+    
+    if (currentBlogPage === 1) {
+        grid.innerHTML = '';
+    }
+    
+    postsToShow.forEach(post => {
+        const card = document.createElement('div');
+        card.className = 'blog-card';
+        card.onclick = () => showBlogPostDetails(post);
+        
+        card.innerHTML = `
+            <div class="blog-image">
+                <img src="${post.image}" alt="${post.title}">
+                <div class="blog-category">${post.category}</div>
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span class="blog-journal">${post.journal}</span>
+                    <span class="blog-date">${formatDate(post.date)}</span>
+                </div>
+                <h3>${post.title}</h3>
+                <p>${post.excerpt}</p>
+                <div class="blog-author">By ${post.author}</div>
+                <div class="blog-tags">
+                    ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            </div>
+        `;
+        
+        grid.appendChild(card);
+    });
+    
+    // Update load more button
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        if (endIndex >= filteredBlogPosts.length) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'block';
+        }
+    }
+}
+
+// Filter blog posts
+function filterBlogPosts() {
+    const categoryFilter = document.getElementById('blogCategoryFilter').value;
+    const journalFilter = document.getElementById('blogJournalFilter').value;
+    const yearFilter = document.getElementById('blogYearFilter').value;
+    
+    filteredBlogPosts = blogPosts.filter(post => {
+        const matchesCategory = !categoryFilter || post.category === categoryFilter;
+        const matchesJournal = !journalFilter || post.journal === journalFilter;
+        const matchesYear = !yearFilter || post.year === yearFilter;
+        
+        return matchesCategory && matchesJournal && matchesYear;
+    });
+    
+    currentBlogPage = 1;
+    displayBlogPosts();
+}
+
+// Load more posts
+function loadMorePosts() {
+    currentBlogPage++;
+    displayBlogPosts();
+}
+
+// Show blog post details
+function showBlogPostDetails(post) {
+    const modal = document.createElement('div');
+    modal.className = 'blog-modal';
+    modal.innerHTML = `
+        <div class="modal-content blog-modal-content">
+            <span class="close-modal" onclick="this.parentElement.parentElement.remove()">&times;</span>
+            <div class="blog-header">
+                <div class="blog-image-large">
+                    <img src="${post.image}" alt="${post.title}">
+                </div>
+                <div class="blog-meta-large">
+                    <span class="blog-category-badge">${post.category}</span>
+                    <span class="blog-journal-badge">${post.journal}</span>
+                    <span class="blog-date-large">${formatDate(post.date)}</span>
+                </div>
+            </div>
+            <h2>${post.title}</h2>
+            <div class="blog-author-large">By ${post.author}</div>
+            <div class="blog-content-full">
+                <p>${post.content}</p>
+            </div>
+            <div class="blog-tags-large">
+                ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <div class="disclaimer">
+                <small><em>Note: This article summarizes recent research findings. For medical advice, please consult a healthcare professional.</em></small>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Close modal when clicking outside
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    };
+}
+
+// Format date
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+}
 
 // Display skin conditions
 function displaySkinConditions() {
