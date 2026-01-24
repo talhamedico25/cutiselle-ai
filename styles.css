@@ -1,4 +1,5 @@
-/* Minimal CSS for CutiselleAI - Works with Tailwind CDN */
+/* Minimal CSS for CutiselleAI - Pinkish White Soothing Theme */
+/* Works with Tailwind CDN - Helvetica-like font family */
 
 /* Reset & Smooth Scrolling */
 * {
@@ -13,6 +14,9 @@ html {
 
 body {
     overflow-x: hidden;
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom Animations */
@@ -27,12 +31,32 @@ body {
     }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
     }
     50% {
         opacity: 0.5;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
@@ -46,6 +70,14 @@ body {
     animation: fadeInUp 0.6s ease-out;
 }
 
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.4s ease-out;
+}
+
 /* Hidden utility (if not using Tailwind's hidden) */
 .hidden {
     display: none !important;
@@ -55,35 +87,154 @@ body {
 button,
 a,
 input,
-select {
-    transition: all 0.3s ease;
+select,
+textarea {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Focus states for accessibility */
+/* Focus states for accessibility - Pink theme */
 button:focus,
 input:focus,
-select:focus {
-    outline: 2px solid #2563eb;
+select:focus,
+textarea:focus {
+    outline: 2px solid #ec4899;
     outline-offset: 2px;
 }
 
-/* Custom scrollbar for modern browsers */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #ec4899;
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar for modern browsers - Pink theme */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #fdf2f8;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
+    background: linear-gradient(to bottom, #f9a8d4, #ec4899);
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: linear-gradient(to bottom, #ec4899, #db2777);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #f9a8d4 #fdf2f8;
+}
+
+/* Selection color - Pink theme */
+::selection {
+    background-color: #fce7f3;
+    color: #be185d;
+}
+
+::-moz-selection {
+    background-color: #fce7f3;
+    color: #be185d;
+}
+
+/* Glassmorphism effects */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.1);
+}
+
+.glass-pink {
+    background: rgba(253, 242, 248, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(236, 72, 153, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.05);
+}
+
+/* Hover effects for cards */
+.glass:hover,
+.glass-pink:hover {
+    box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Button hover effects */
+button:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+button:not(:disabled):active {
+    transform: translateY(0);
+}
+
+/* Input placeholder styling */
+::placeholder {
+    color: #d1d5db;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #d1d5db;
+}
+
+::-ms-input-placeholder {
+    color: #d1d5db;
+}
+
+/* Link hover effects */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Image loading placeholder */
+img {
+    background: linear-gradient(90deg, #fdf2f8 0%, #fce7f3 50%, #fdf2f8 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+img[src] {
+    animation: none;
+    background: none;
+}
+
+/* Modal backdrop blur */
+.modal-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Subtle hover scale effect */
+.hover-scale:hover {
+    transform: scale(1.02);
 }
 
 /* Print styles */
@@ -91,7 +242,144 @@ select:focus {
     header,
     footer,
     #mobileMenuBtn,
-    #mobileMenu {
+    #mobileMenu,
+    button {
         display: none;
     }
+    
+    body {
+        background: white;
+    }
+    
+    .glass,
+    .glass-pink {
+        background: white;
+        border: 1px solid #e5e7eb;
+    }
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .glass,
+    .glass-pink {
+        border: 2px solid #ec4899;
+    }
+}
+
+/* Dark mode preference (optional) */
+@media (prefers-color-scheme: dark) {
+    /* Override if needed in future */
+}
+
+/* Custom checkbox styling - Pink theme */
+input[type="checkbox"] {
+    accent-color: #ec4899;
+}
+
+/* Custom radio button styling - Pink theme */
+input[type="radio"] {
+    accent-color: #ec4899;
+}
+
+/* File input styling */
+input[type="file"] {
+    cursor: pointer;
+}
+
+/* Disabled state styling */
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Blog post hover effect */
+article:hover {
+    transform: translateY(-4px);
+}
+
+/* Smooth image loading */
+img {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+img.loaded,
+img:not([src=""]) {
+    opacity: 1;
+}
+
+/* Tooltip base styling (if needed) */
+[data-tooltip] {
+    position: relative;
+}
+
+/* Focus visible for better keyboard navigation */
+:focus-visible {
+    outline: 2px solid #ec4899;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Remove default focus outline for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Skeleton loading animation (for future use) */
+.skeleton {
+    background: linear-gradient(90deg, #fdf2f8 25%, #fce7f3 50%, #fdf2f8 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Prevent text selection on buttons */
+button {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Icon alignment helper */
+.icon-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
